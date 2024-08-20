@@ -58,13 +58,12 @@ public class WebSecurityConfig {
                 .usersByUsernameQuery("select username,password,enabled "
                         + "from user "
                         + "where username = ?")
-                .authoritiesByUsernameQuery("SELECT username, name " +
-                                "FROM user_role ur " +
-                                "INNER JOIN USER u " +
-                                "ON ur.user_id = u.id " +
-                                "INNER JOIN ROLE r " +
-                                "ON ur.role_id = r.id "+
-                                "where username = ?");
+                .authoritiesByUsernameQuery(
+				"select u.username, r.name "
+                        + "from user_role ur inner join user u on ur.user_id = u.id "
+                        + "inner join role r on ur.role_id = r.id "
+                        + "where u.username = ?"
+                                );
     }
 
     @Bean

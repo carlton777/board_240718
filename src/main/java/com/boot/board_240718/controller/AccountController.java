@@ -17,7 +17,7 @@ public class AccountController {
     //post 방식 호출인데 GetMapping 받음
     @GetMapping("/login")
     public String login(){
-        return "/account/login";
+        return "account/login";
     }
 
     @GetMapping("/register")
